@@ -1,16 +1,21 @@
 package com.test.market3;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.test.market3.fragment.StatsFragment;
+import com.test.market3.fragment.StviniFragment;
 
-public class MainActivity extends ActionBarActivity
+
+public class MainActivity extends AppCompatActivity
         implements NavigationDrawerCallbacks {
 
     /**
@@ -33,14 +38,76 @@ public class MainActivity extends ActionBarActivity
 
         // Set up the drawer.
         mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar);
+
         // populate the navigation drawer
         mNavigationDrawerFragment.setUserData("Vinicius", "viniciusdelemos@gmail.com", BitmapFactory.decodeResource(getResources(), R.drawable.avatar));
     }
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+
         // update the main content by replacing fragments
         Toast.makeText(this, "Menu item selected -> " + position, Toast.LENGTH_SHORT).show();
+
+        if(position == 1){
+
+            FragmentManager fragmentManager = getFragmentManager();
+
+            Fragment fragment = null;
+
+            fragment = getFragmentManager().findFragmentByTag(StatsFragment.TAG);
+
+            if (fragment == null) {
+
+                Toast.makeText(this, "Fragment NOT Visible -> " + position, Toast.LENGTH_SHORT).show();
+
+                fragment = new StatsFragment();
+
+                getFragmentManager().beginTransaction().replace(R.id.container, fragment, StatsFragment.TAG).commit();
+            }
+            else {
+
+                Toast.makeText(this, "Fragment IS Visible -> " + position, Toast.LENGTH_SHORT).show();
+            }
+
+
+
+            /*fragmentClass = MarketListFragment.class;
+
+            try {
+                fragment = (Fragment) fragmentClass.newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            // Insert the fragment by replacing any existing fragment
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
+
+            setTitle("Position: " + position);*/
+        }
+        else if(position == 2)
+        {
+            FragmentManager fragmentManager = getFragmentManager();
+
+            Fragment fragment = null;
+
+            fragment = getFragmentManager().findFragmentByTag(StviniFragment.TAG);
+
+            if (fragment == null) {
+
+                Toast.makeText(this, "Fragment NOT Visible -> " + position, Toast.LENGTH_SHORT).show();
+
+                fragment = new StviniFragment();
+
+                getFragmentManager().beginTransaction().replace(R.id.container, fragment, StviniFragment.TAG).commit();
+            }
+            else {
+
+                Toast.makeText(this, "Fragment IS Visible -> " + position, Toast.LENGTH_SHORT).show();
+            }
+        }
+
     }
 
 

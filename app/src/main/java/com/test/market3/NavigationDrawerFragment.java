@@ -2,6 +2,7 @@ package com.test.market3;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -16,6 +17,7 @@ import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -117,10 +119,23 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     }
 
     public List<NavigationItem> getMenu() {
+
         List<NavigationItem> items = new ArrayList<NavigationItem>();
+
         items.add(new NavigationItem("item 1", getResources().getDrawable(R.drawable.ic_menu_check)));
         items.add(new NavigationItem("item 2", getResources().getDrawable(R.drawable.ic_menu_check)));
         items.add(new NavigationItem("item 3", getResources().getDrawable(R.drawable.ic_menu_check)));
+
+        /*items.add(new NavigationItem(getString(R.string.search), getResources().getDrawable(R.drawable.ic_action_search)));
+        items.add(new NavigationItem(getString(R.string.stats), getResources().getDrawable(R.drawable.ic_action_trending_up)));
+        items.add(new NavigationItem(getString(R.string.myaccount), getResources().getDrawable(R.drawable.ic_action_account_box)));
+        items.add(new NavigationItem(getString(R.string.settings), getResources().getDrawable(R.drawable.ic_action_settings)));*/
+
+
+        items.add(new NavigationItem("Search", getResources().getDrawable(R.drawable.ic_menu_check)));
+        items.add(new NavigationItem("My Account", getResources().getDrawable(R.drawable.ic_menu_check)));
+        items.add(new NavigationItem("Settings", getResources().getDrawable(R.drawable.ic_menu_check)));
+
         return items;
     }
 

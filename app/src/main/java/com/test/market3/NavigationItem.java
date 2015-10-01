@@ -3,9 +3,6 @@ package com.test.market3;
 
 import android.graphics.drawable.Drawable;
 
-/**
- * Created by poliveira on 24/10/2014.
- */
 public class NavigationItem {
     private String mText;
     private Drawable mDrawable;
